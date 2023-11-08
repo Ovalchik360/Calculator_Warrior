@@ -16,3 +16,5 @@ def run():
         pygame.display.flip()
 
 run()
+
+#Проверка
