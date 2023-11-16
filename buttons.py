@@ -1,4 +1,5 @@
 import pygame #импорт библиотеки
+from arrows import *
 
 screen_width = 306 #ширина экрана
 screen_height = 544 #высота экрана
@@ -21,10 +22,12 @@ class Button (): #создание класса кнопка
 
         screen.blit(self.image, (self.pos_x, self.pos_y))   #отрисовка не нажатой кнопки
 
-        if click[0] == 1:   #проверка нажата ли мышка
+        if pygame.MOUSEBUTTONDOWN:   #проверка нажата ли мышка
             if x < mouse_pos[0] < x + self.button_width:    #проверка положения курсора к кнопке по координате x
                 if y < mouse_pos[1] < y + self.button_height:   #проверка положения курсора к кнопке по координате y
                     screen.blit(self.image_pressed, (self.pos_x, self.pos_y))   #отрисовка нажатой кнопки
+                    self.is_pressed = True
+            
 
 
 #объявление кнопок

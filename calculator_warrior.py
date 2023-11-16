@@ -1,5 +1,6 @@
 import pygame #импорт библиотеки
 from buttons import * #импорт всего из файла buttons
+from arrows import *
 
 pygame.init() #инициализация библиотеки
 
@@ -33,6 +34,21 @@ while running: #обьявление бесконечного цикла
     button_multiply.draw(button_multiply.pos_x, button_multiply.pos_y)
     button_equal.draw(button_equal.pos_x, button_equal.pos_y)
     button_backspace.draw(button_backspace.pos_x, button_backspace.pos_y)
+    arrow.draw(arrow_pos[arrow_actual_pos][0], arrow_pos[arrow_actual_pos][1])
+
+    if button_2.is_pressed == True:
+        if arrow_actual_pos != 0:
+            arrow_actual_pos = arrow_actual_pos - 1
+        else:
+            arrow_actual_pos = 5
+        button_2.is_pressed = False
+
+    if button_8.is_pressed == True:
+        if arrow_actual_pos != 5:
+            arrow_actual_pos = arrow_actual_pos + 1
+        else:
+            arrow_actual_pos = 0
+        button_8.is_pressed = False
 
     pygame.display.update() #обновление экрана
 
@@ -40,3 +56,4 @@ while running: #обьявление бесконечного цикла
         if event.type == pygame.QUIT: #проверка нажатия кнопки закрыть на окне
             running = False #остановка бесконечного цикла
             pygame.quit() #окончание работы pygame
+    
